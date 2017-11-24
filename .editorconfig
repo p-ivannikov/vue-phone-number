@@ -6,7 +6,7 @@ end_of_line = lf
 insert_final_newline = true
 
 [.{js, vue}]
-indent_size = 4
+indent_size = 2
 
 [.pcss]
 indent_size = 2
