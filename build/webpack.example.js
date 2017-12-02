@@ -42,7 +42,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      'vue-phone-number': path.resolve(__dirname, '../dist/vue-phone-number.js')
     }
   },
   plugins: [

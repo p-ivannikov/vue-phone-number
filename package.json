@@ -4,6 +4,8 @@
   "description": "Phone number field for Vuejs apps",
   "main": "dist/scripts.js",
   "scripts": {
+    "dev": "node_modules/.bin/webpack --config ./build/webpack.dev.js",
+    "build": "node_modules/.bin/webpack --config ./build/webpack.dev.js",
     "example": "node_modules/.bin/webpack-dev-server --config ./build/webpack.example.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -45,7 +47,8 @@
     "vue-loader": "^13.5.0",
     "vue-template-compiler": "^2.5.8",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4"
+    "webpack-dev-server": "^2.9.4",
+    "webpack-merge": "^4.1.1"
   },
   "dependencies": {
     "vue": "^2.5.8"

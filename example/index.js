@@ -4,6 +4,6 @@ import app from './app.vue'
 new Vue({
   el: '#example',
   components: {
-    'app': app
+    app
   }
 })
