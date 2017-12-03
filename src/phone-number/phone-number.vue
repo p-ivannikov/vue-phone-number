@@ -1,20 +1,38 @@
 <template lang="pug">
-h3 {{message}}
+input(type="text" v-model="phone")
 </template>
-
-<style>
-h3 {
-  color: #60a;
-}
-</style>
 
 <script>
 export default {
   name: 'PhoneNumber',
-  data: function () {
-    return {
-      message: 'component message'
+  props: {
+    value: {
+      type: String
     }
+  },
+  data: () => {
+    return {
+      _model: ''
+    }
+  },
+  computed: {
+    phone: {
+      get: function () {
+        return this._model
+      },
+      set: function (value) {
+        this._model = value
+        this.updatePhone();
+      }
+    }
+  },
+  methods: {
+    updatePhone() {
+      this.$emit('input', this._model)
+    }
+  },
+  created () {
+    this._model = this.value
   }
 }
 </script>
