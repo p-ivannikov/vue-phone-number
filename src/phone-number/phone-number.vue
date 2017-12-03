@@ -1,5 +1,22 @@
 <template lang="pug">
-input(type="text" v-model="phone")
+div.pn-control
+  label
+    span.pn-control__label {{label}}
+    input.pn-control__field.pn-control__field_toggle(
+      type="text" 
+      v-model="phone"
+    )
+
+  button.pn-button.pn-control__pn-button(
+    type="button"
+    :class="{ 'pn-button_active': opened }"
+    @click="toggle()"
+  ) &#x25BC;
+
+  ul.pn-list.pn-control__pn-list(
+    v-if="opened"
+    )
+    li.pn-list__item +7 Russian Federation
 </template>
 
 <script>
@@ -12,7 +29,9 @@ export default {
   },
   data: () => {
     return {
-      _model: ''
+      _model: '',
+      label: 'Phone',
+      opened: false
     }
   },
   computed: {
@@ -27,8 +46,22 @@ export default {
     }
   },
   methods: {
-    updatePhone() {
+    updatePhone () {
       this.$emit('input', this._model)
+    },
+    toggle () {
+      if (this.opened) {
+        this.close()
+        return;
+      }
+
+      this.open()
+    },
+    close () {
+      this.opened = false;
+    },
+    open () {
+      this.opened = true;
     }
   },
   created () {

@@ -1,5 +1,10 @@
 const path = require('path')
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
 const eslintFormatter = require('eslint-friendly-formatter')
+
+const postcssConfig = require('../.postcssrc.js')
 
 module.exports = {
   entry: {
@@ -37,6 +42,29 @@ module.exports = {
             js: 'babel-loader!eslint-loader'
           }
         }
+      },
+      {
+        test: /\.pcss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                sourceMap: true,
+                url: false
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => postcssConfig.plugins,
+                sourceMap: true
+              }
+            }
+          ]
+        })
       }
     ]
   },
@@ -48,5 +76,10 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     }
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: 'vue-phone-number.css'
+    })
+  ]
 }

@@ -1,0 +1,23 @@
+.pn-button {
+  background-image: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  touch-action: manipulation;
+  transition: 0.2s ease;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  outline: none;
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &_active {
+    background: $color_green;
+    color: $color_white;
+  }
+}
