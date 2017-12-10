@@ -16,6 +16,7 @@ div.pn-control
   ul.pn-list.pn-control__pn-list(v-if="opened")
     li.pn-list__item(v-for="(phoneCodes, countryCode) in phones")
       button.pn-button.pn-button_theme_country-code(type=button)
+        span.pn-flag.pn-flag_{{countryCode}}
         span.pn-country-info(v-for="code in phoneCodes") {{code}}
         span.pn-country-info {{names[countryCode]}}
 
