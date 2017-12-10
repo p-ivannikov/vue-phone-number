@@ -13,15 +13,18 @@ div.pn-control
     @click="toggle()"
   ) &#x25BC;
 
-  ul.pn-list.pn-control__pn-list(
-    v-if="opened"
-    )
-    li.pn-list__item +7 Russian Federation
+  ul.pn-list.pn-control__pn-list(v-if="opened")
+    li.pn-list__item(v-for="(phoneCodes, countryCode) in phones")
+      button.pn-button.pn-button_theme_country-code(type=button)
+        span.pn-country-info(v-for="code in phoneCodes") {{code}}
+        span.pn-country-info {{names[countryCode]}}
+
 </template>
 
 <script>
 import countryNames from '../data/country-names.json'
-console.log(countryNames)
+import countryPhones from '../data/country-phones.json'
+
 export default {
   name: 'PhoneNumber',
   props: {
@@ -43,8 +46,14 @@ export default {
       },
       set: function (value) {
         this._model = value
-        this.updatePhone();
+        this.updatePhone()
       }
+    },
+    phones: function () {
+      return countryPhones
+    },
+    names: function () {
+      return countryNames
     }
   },
   methods: {
@@ -54,7 +63,7 @@ export default {
     toggle () {
       if (this.opened) {
         this.close()
-        return;
+        return
       }
 
       this.open()
