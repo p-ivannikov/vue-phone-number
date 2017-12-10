@@ -20,6 +20,8 @@ div.pn-control
 </template>
 
 <script>
+import countryNames from '../data/country-names.json'
+console.log(countryNames)
 export default {
   name: 'PhoneNumber',
   props: {
